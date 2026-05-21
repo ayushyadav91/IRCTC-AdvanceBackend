@@ -1,0 +1,14 @@
+1.Sclable Folder Structure
+2. Best practices => request middlewares, error middlewares, cors middlewares
+3. custom asyncHandler and error class
+4. Singleton pattern database connection using primsa aur use as ODM
+** Use Redis for Caching for Low Latency if api take 100ms so with Caching it take 2ms
+--> Prisma connnection singleton and Redis connection Singleton
+--> Mean services ke alag alag part me alag alag redis connection se acche 
+ham ek part me redis connectio kare and use he service ke different different parts me use kare
+5. Docker setup and write docker-compose fole for postgres, redis, and pg-admin that hlep use to show the data 
+
+
+-------------- CONTROLLER ----------SERVICE------------------------------
+6. Build send OTP send route 
+7.==> 1.57 create hasing using crypto but i do with bcrypt

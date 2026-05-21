@@ -1,0 +1,50 @@
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String   @id @default(uuid())
+  firstName     String
+  lastName      String
+  email         String   @unique
+  password      String
+  emailVerified Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  AuthProviders AuthProvider[]
+}
+
+model AuthProvider {
+  id            String   @id @default(uuid())
+  userId        String   @unique
+  provider      String
+  providerId    String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+//Build relationships and  onDelete: Cascade beacuse if we delete a user, we want to delete all the authproviders associated with that user
+  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+/*
+here are there constraints 
+1.one google account can't be use by more than one user
+2.one user can have only one auth method provider
+3.index for give faster user search
+4.unique for give faster user search
+5.unique for give faster auth method provider search
+6.unique for give faster user and auth method provider search
+
+*/
+  @@unique([provider, providerId])
+  @@unique([userId, provider])
+  @@index([userId])
+
+}
+
+
+
