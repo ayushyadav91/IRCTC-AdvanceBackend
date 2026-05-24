@@ -33,6 +33,9 @@ type Config = {
 
   REDIS_USER_TTL:number,
   GOOGLE_CLIENT_ID?:string,
+  GOOGLE_CLIENT_SECRET?:string,
+  KAFKA_BROKER?:string,
+  KAFKA_CLIENT_ID?:string,
 
 }
 const config: Config = {
@@ -46,6 +49,10 @@ const config: Config = {
   OTP_TTL:Number(process.env.OTP_TTL)||5,
   OTP_RATE_MAX_PER_HOUR:Number(process.env.OTP_RATE_MAX_PER_HOUR)||5,
   OTP_MAX_VERFIY_ATTEMPTS:Number(process.env.OTP_MAX_VERFIY_ATTEMPTS)||5,
+  KAFKA_BROKER:process.env.KAFKA_BROKER,
+  KAFKA_CLIENT_ID:process.env.KAFKA_CLIENT_ID,
+
+
 
   //MAIL CONFIGRUTION
   EMAIL_HOST:process.env.EMAIL_HOST,
@@ -63,6 +70,9 @@ const config: Config = {
 
   REDIS_USER_TTL:Number(process.env.REDIS_USER_TTL)||86400,
   GOOGLE_CLIENT_ID:process.env.GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET:process.env.GOOGLE_CLIENT_SECRET,
+
+
 
 
 };

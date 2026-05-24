@@ -1,4 +1,5 @@
 import 'dotenv/config';
+
 import express,{Request,Response} from "express";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
@@ -38,6 +39,7 @@ app.get("/health",(req:Request,res:Response)=>{
 
 //Routes
 import authRouter from "./routes/auth.route";
+
 app.use("/api/v1/auth",authRouter);
 
 
